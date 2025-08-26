@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-if [ ! -f wmt16_en_de.tar.gz ]; then
-	echo "please download wmt16_en_de.tar.gz to project root dir"
+if [ ! -f wmt14_en_de.tar.gz ]; then
+	echo "please download wmt14_en_de.tar.gz to project root dir"
 	exit
 fi
 
 echo -e "| extract files ... \n"
 data_dir=examples/translation/wmt_en_de
-mkdir -p  $data_dir && tar zxvf wmt16_en_de.tar.gz -C $data_dir
+mkdir -p  $data_dir && tar zxvf wmt14_en_de.tar.gz -C $data_dir
 
 ln -srf $data_dir/train.tok.clean.bpe.32000.en $data_dir/train.en
 ln -srf $data_dir/train.tok.clean.bpe.32000.de $data_dir/train.de
@@ -23,6 +23,6 @@ python preprocess.py \
 --trainpref $data_dir/train \
 --validpref $data_dir/valid \
 --testpref $data_dir/test \
- --destdir data-bin/wmt16_en_de_google \
+ --destdir data-bin/wmt14_en_de_google \
  --joined-dictionary \
  --thresholdsrc 5 --thresholdtgt 5
